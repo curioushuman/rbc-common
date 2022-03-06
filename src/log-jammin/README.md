@@ -15,6 +15,12 @@ Within your microservice:
 $ npm i --save @curioushuman/rbc-common
 ```
 
+### Logger
+
+TBC
+
+### Middleware
+
 Then in your app.module.ts
 
 ```typescript
