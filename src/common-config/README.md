@@ -19,9 +19,59 @@ $ npm i --save @curioushuman/rbc-common
 
 ### Export/import
 
-Then in your app.module.ts:
+Then in your app.module.ts, in your Module decorator use the forRootAsync wherever you need config values:
 
-TBC
+```typescript
+@Module({
+  imports: [
+    ConfigModule.forRoot({
+      ignoreEnvFile: true,
+      load: [configFactory],
+    }),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        uri: configService.get<string>('database.mongodb.uri'),
+      }),
+      inject: [ConfigService],
+    }),
+    TiersModule,
+  ],
+  controllers: [],
+  providers: [],
+})
+```
+
+Within your main.ts we do a bit of a naughty thing. For most instances you can do a similar thing to above (see docs RE main.ts), but I found for microservices you weren't able to. So... I did this (for now):
+
+```typescript
+import { NestFactory } from '@nestjs/core';
+import { MicroserviceOptions } from '@nestjs/microservices';
+import { configObject } from '@curioushuman/rbc-common';
+
+import { AppModule } from './app.module';
+
+async function bootstrap() {
+  const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+    AppModule,
+    {
+      transport: configObject.microservices.transport,
+      options: {
+        client: {
+          brokers: [configObject.microservices.broker],
+        },
+        consumer: {
+          groupId: configObject.microservices.services.subscription.groupId,
+        },
+      },
+    },
+  );
+
+  app.listen();
+}
+bootstrap();
+
+```
 
 ## Test
 
