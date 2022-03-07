@@ -36,6 +36,8 @@ export class FeatureModule {}
 
 ```
 
+Then you'll be able to include CommonService into your feature service and controller (as normal).
+
 ## Test
 
 More effort, for more thorough testing needs to be put into place.
