@@ -18,6 +18,8 @@ interface OtherMicroservice {
 export type MicroserviceConfig = Microservice &
   (KafkaMicroservice | OtherMicroservice);
 
+export type KafkaMicroserviceConfig = KafkaMicroservice & Microservice;
+
 export interface MicroservicesConfig {
   brokers: string[];
   services: Record<string, MicroserviceConfig>;
