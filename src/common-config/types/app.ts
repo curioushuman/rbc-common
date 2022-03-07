@@ -1,3 +1,3 @@
-export enum Host {
+export enum App {
   Port = 'port',
 }

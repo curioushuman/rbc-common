@@ -1,4 +1,4 @@
-export * from './common-config.type';
+export * from './common-config';
 export * from './database';
-export * from './host';
+export * from './app';
 export * from './microservices';

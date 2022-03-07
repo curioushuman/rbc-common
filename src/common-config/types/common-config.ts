@@ -1,5 +1,5 @@
 import type { Databases, MongoDb, Rdbms } from '.';
-import type { Host } from '.';
+import type { App } from '.';
 import type { MicroservicesConfigGroup } from '.';
 
 // TODO
@@ -15,10 +15,10 @@ type CommonConfigGroup<T extends string, U extends string> = {
 };
 
 type DatabaseConfigGroup = CommonConfigGroup<Databases, MongoDb | Rdbms>;
-type HostConfigGroup = CommonConfigKeyValue<Host>;
+type AppConfigGroup = CommonConfigKeyValue<App>;
 
 export type CommonConfig = {
+  app: AppConfigGroup;
   database: DatabaseConfigGroup;
-  host: HostConfigGroup;
   microservices: MicroservicesConfigGroup;
 };
