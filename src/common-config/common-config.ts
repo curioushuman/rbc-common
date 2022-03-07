@@ -30,5 +30,5 @@ class CommonConfigService {
   }
 }
 
-const config = CommonConfigService.getConfig();
+const config = () => CommonConfigService.getConfig();
 export { config as Configuration };
