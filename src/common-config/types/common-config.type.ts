@@ -5,10 +5,6 @@ import type { Host } from '.';
 // - currently ALL values are optional; I need to be able to mark some as required
 // there is probably a simpler way to do this
 
-// * NOTES
-// ConfigObject (which is where this goes towards) uses the following (classic) type declaration
-// export declare type ConfigObject = Record<string, any>;
-
 type CommonConfigKeyValue<T extends string> = {
   [config in T]?: string | number;
 };

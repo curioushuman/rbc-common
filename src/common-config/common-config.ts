@@ -1,3 +1,4 @@
+import { ConfigObject } from '@nestjs/config';
 import type { CommonConfig } from './types';
 
 /**
@@ -7,7 +8,7 @@ class CommonConfigService {
   /**
    * Let's keep it simple to begin with
    */
-  static getConfig(): CommonConfig {
+  static getConfig(): ConfigObject {
     const config: CommonConfig = {
       database: {
         mongodb: {
@@ -18,7 +19,14 @@ class CommonConfigService {
         port: process.env.PORT,
       },
     };
-    return config;
+
+    return this.getConfigFactory(config);
+  }
+
+  static getConfigFactory(config: CommonConfig): ConfigObject {
+    let configObject: ConfigObject = {};
+    configObject = Object.assign(configObject, config);
+    return configObject;
   }
 }
 

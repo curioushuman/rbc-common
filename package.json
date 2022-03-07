@@ -39,9 +39,9 @@
   },
   "bugs": "https://github.com/curioushuman/rbc-common",
   "peerDependencies": {
-    "@nestjs/common": "^8.0.0"
+    "@nestjs/common": "^8.0.0",
+    "@nestjs/config": "^1.2.0"
   },
-  "dependencies": {},
   "devDependencies": {
     "@nestjs/cli": "^8.0.0",
     "@nestjs/schematics": "^8.0.0",
