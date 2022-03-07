@@ -1,6 +1,6 @@
 {
   "name": "@curioushuman/rbc-common",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A library of common code for use across the RbC ecosystem",
   "author": "Mike Kelly <mike@curioushuman.com.au>",
   "license": "UNLICENSED",
