@@ -1,4 +1,6 @@
 import { ConfigObject } from '@nestjs/config';
+import { Transport } from '@nestjs/microservices';
+
 import type { CommonConfig } from './types';
 
 /**
@@ -18,6 +20,10 @@ class CommonConfigService {
       host: {
         port: process.env.PORT,
       },
+      microservices: {
+        transport: Transport.KAFKA,
+        broker: 'kafka-srv',
+      },
     };
 
     return this.getConfigFactory(config);
@@ -30,5 +36,6 @@ class CommonConfigService {
   }
 }
 
-const config = () => CommonConfigService.getConfig();
-export { config as Configuration };
+const configObject = CommonConfigService.getConfig();
+const configFactory = () => configObject;
+export { configObject, configFactory };

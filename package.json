@@ -40,7 +40,8 @@
   "bugs": "https://github.com/curioushuman/rbc-common",
   "peerDependencies": {
     "@nestjs/common": "^8.0.0",
-    "@nestjs/config": "^1.2.0"
+    "@nestjs/config": "^1.2.0",
+    "@nestjs/microservices": "^8.4.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.0.0",

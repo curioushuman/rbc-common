@@ -55,6 +55,10 @@ const config: CommonConfig = {
       uri: 'mongodb://localhost:27017/nestjs',
     },
   },
+  microservices: {
+    transport: Transport.KAFKA,
+    broker: 'kafka-srv'
+  },
   host: {
     port: 3000,
   },

@@ -1,5 +1,6 @@
 import type { Databases, MongoDb, Rdbms } from '.';
 import type { Host } from '.';
+import type { MicroservicesConfigGroup } from '.';
 
 // TODO
 // - currently ALL values are optional; I need to be able to mark some as required
@@ -13,7 +14,11 @@ type CommonConfigGroup<T extends string, U extends string> = {
   [config in T]?: CommonConfigKeyValue<U>;
 };
 
+type DatabaseConfigGroup = CommonConfigGroup<Databases, MongoDb | Rdbms>;
+type HostConfigGroup = CommonConfigKeyValue<Host>;
+
 export type CommonConfig = {
-  database: CommonConfigGroup<Databases, MongoDb | Rdbms>;
-  host: CommonConfigKeyValue<Host>;
+  database: DatabaseConfigGroup;
+  host: HostConfigGroup;
+  microservices: MicroservicesConfigGroup;
 };
