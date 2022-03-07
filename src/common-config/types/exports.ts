@@ -1,1 +1,1 @@
-export { KafkaMicroserviceConfig } from './microservices';
+export { KafkaConfig } from './microservices';
