@@ -1,8 +1,13 @@
+/**
+ * Using these interfaces to support various microservice configuration types
+ * To be passed via ConfigObject to the microservices
+ */
 interface Microservice {
   name: string;
   clientId: string;
   groupId: string;
   brokers?: string[];
+  transport?: string;
 }
 
 interface KafkaMicroservice {
@@ -15,11 +20,28 @@ interface OtherMicroservice {
   pants?: string;
 }
 
+/**
+ * This intersection type is used to support various microservice configuration types
+ * During transition they will be reduced to ConfigObjects and strings
+ */
 export type MicroserviceConfig = Microservice &
   (KafkaMicroservice | OtherMicroservice);
 
-export type KafkaConfig = KafkaMicroservice & Microservice;
+/**
+ * Then we'll create more focused intersections to be passed to the microservices
+ * for stronger type checking at the other end
+ */
+type MicroserviceConfigFactory<Type extends Microservice> = {
+  [Property in keyof Type as Required<'transport'>]: Type[Property];
+};
 
+export type KafkaConfig = MicroserviceConfigFactory<
+  KafkaMicroservice & Microservice
+>;
+
+/**
+ * These are also used in transferring the configuration to the microservices
+ */
 export interface MicroservicesConfig {
   brokers: string[];
   services: Record<string, MicroserviceConfig>;
