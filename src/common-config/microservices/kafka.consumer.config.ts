@@ -3,13 +3,12 @@ import { Transport, KafkaOptions } from '@nestjs/microservices';
 import type { KafkaConfig } from './';
 
 // TODO
-// * TESTING
 // - SSL and SASL
 // - bring in production from ENV variable from common-config
 // - review error logging
 
 export class KafkaConsumerConfig {
-  private readonly options: { name: string } & KafkaOptions;
+  protected options: { name: string } & KafkaOptions;
 
   constructor(private kafkaConfig: KafkaConfig) {
     // const productionTmp = false;

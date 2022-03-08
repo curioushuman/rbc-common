@@ -1,4 +1,4 @@
-import { MicroservicesConfigGroup, MicroserviceConfig } from '../';
+import { MicroservicesConfigGroup, services } from '../';
 
 describe('Microservices', () => {
   describe('Config', () => {
@@ -6,29 +6,19 @@ describe('Microservices', () => {
       describe('constructor()', () => {
         it('should create a services object from services array, with clientId as the keys', () => {
           const brokers = ['kafka-srv:9092'];
-          const serviceConfigs: MicroserviceConfig[] = [
-            {
-              name: 'KAFKA_SERVICE',
-              clientId: 'kafka',
-              groupId: 'kafka-consumer',
-            },
-            {
-              name: 'BLUES_SERVICE',
-              clientId: 'blues',
-              groupId: 'blues-consumer',
-            },
-          ];
+          const service = services[0];
+          const serviceClientId = service.clientId;
           const microservicesConfigGroup = new MicroservicesConfigGroup(
             brokers,
-            serviceConfigs,
+            services,
           );
 
           expect(Object.keys(microservicesConfigGroup.services).length).toEqual(
-            2,
+            services.length,
           );
-          expect(microservicesConfigGroup.services.kafka.name).toEqual(
-            'KAFKA_SERVICE',
-          );
+          expect(
+            microservicesConfigGroup.services[serviceClientId].clientId,
+          ).toEqual(serviceClientId);
         });
       });
     });

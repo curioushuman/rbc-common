@@ -1,10 +1,11 @@
 import { ConfigFactory, ConfigObject } from '@nestjs/config';
 
 import type { CommonConfig } from './types';
-import { MicroservicesConfigGroup } from './microservices';
+import { MicroservicesConfigGroup, services } from './microservices';
 import type { MicroserviceConfig } from './microservices';
 
 // TODO
+// * Testing
 // - make brokers an array of strings
 // - convert this back into an injectable so you can use it amongst your other common libraries (via DI)
 //   - leave the additional exports below so it can still be used in it's current form
@@ -14,18 +15,7 @@ import type { MicroserviceConfig } from './microservices';
  */
 class CommonConfigService {
   private static readonly brokers: string[] = ['kafka-srv:9092'];
-  private static readonly services: MicroserviceConfig[] = [
-    {
-      name: 'AUTH_SERVICE',
-      clientId: 'auth',
-      groupId: 'auth-consumer',
-    },
-    {
-      name: 'SUBSCRIPTIONS_SERVICE',
-      clientId: 'subscriptions',
-      groupId: 'subscriptions-consumer',
-    },
-  ];
+  private static readonly services: MicroserviceConfig[] = services;
 
   static getConfig(): ConfigFactory {
     const config: CommonConfig = {
