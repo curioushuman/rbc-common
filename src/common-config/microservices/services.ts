@@ -8,11 +8,11 @@ export const services: MicroserviceConfig[] = [
   {
     name: 'AUTH_SERVICE',
     clientId: 'kafka-service',
-    groupId: 'auth-service',
+    groupId: 'auth',
   },
   {
     name: 'SUBSCRIPTIONS_SERVICE',
     clientId: 'kafka-service',
-    groupId: 'subscriptions-service',
+    groupId: 'subscriptions',
   },
 ];
