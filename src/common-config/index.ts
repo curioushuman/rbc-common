@@ -1,2 +1,2 @@
-export * from './common-config-service';
-export * from './types/exports';
+export * from './common-config.service';
+export * from './microservices/exports';

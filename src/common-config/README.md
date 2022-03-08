@@ -75,11 +75,12 @@ bootstrap();
 
 ## Test
 
-More effort, for more thorough testing needs to be put into place.
-
 ```bash
 # run tests
 $ npm run test
+
+# run and watch
+$ npm run test:watch
 ```
 
 ## Expanding this work

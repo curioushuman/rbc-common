@@ -1,6 +1,6 @@
-import type { Databases, MongoDb, Rdbms } from '.';
 import type { App } from '.';
-import type { MicroservicesConfigGroup } from '.';
+import type { Databases, MongoDb, Rdbms } from '../databases';
+import type { MicroservicesConfigGroup } from '../microservices';
 
 // TODO
 // - currently ALL values are optional; I need to be able to mark some as required

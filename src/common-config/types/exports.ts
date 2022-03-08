@@ -1,1 +1,0 @@
-export { KafkaConfig } from './microservices';

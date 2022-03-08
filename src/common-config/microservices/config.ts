@@ -41,7 +41,7 @@ export interface MicroservicesConfig {
 }
 
 export class MicroservicesConfigGroup implements MicroservicesConfig {
-  public services: Record<string, MicroserviceConfig>;
+  public services: Record<string, MicroserviceConfig> = {};
   constructor(
     public brokers: string[] = [],
     private serviceConfigs: MicroserviceConfig[],

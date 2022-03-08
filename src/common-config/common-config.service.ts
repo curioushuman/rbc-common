@@ -1,7 +1,8 @@
 import { ConfigFactory, ConfigObject } from '@nestjs/config';
 
-import { MicroservicesConfigGroup } from './types';
-import type { CommonConfig, MicroserviceConfig } from './types';
+import type { CommonConfig } from './types';
+import { MicroservicesConfigGroup } from './microservices';
+import type { MicroserviceConfig } from './microservices';
 
 // TODO
 // - make brokers an array of strings
