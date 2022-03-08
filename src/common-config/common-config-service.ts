@@ -26,7 +26,7 @@ class CommonConfigService {
     },
   ];
 
-  static getConfig(): ConfigObject {
+  static getConfig(): ConfigFactory {
     const config: CommonConfig = {
       app: {
         port: process.env.PORT,
