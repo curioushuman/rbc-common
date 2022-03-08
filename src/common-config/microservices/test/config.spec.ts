@@ -19,6 +19,9 @@ describe('Microservices', () => {
           expect(
             microservicesConfigGroup.services[serviceClientId].clientId,
           ).toEqual(serviceClientId);
+          expect(
+            microservicesConfigGroup.services[serviceClientId].brokers,
+          ).toEqual(brokers);
         });
       });
     });

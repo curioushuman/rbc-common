@@ -48,6 +48,7 @@ export class MicroservicesConfigGroup implements MicroservicesConfig {
   ) {
     serviceConfigs.forEach((serviceConfig) => {
       this.services[serviceConfig.clientId] = serviceConfig;
+      this.services[serviceConfig.clientId].brokers = this.brokers;
     });
   }
 }
