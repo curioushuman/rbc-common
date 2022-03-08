@@ -7,7 +7,6 @@ interface Microservice {
   clientId: string;
   groupId: string;
   brokers?: string[];
-  transport?: string;
 }
 
 interface KafkaMicroservice {
@@ -31,13 +30,7 @@ export type MicroserviceConfig = Microservice &
  * Then we'll create more focused intersections to be passed to the microservices
  * for stronger type checking at the other end
  */
-type MicroserviceConfigFactory<Type extends Microservice> = {
-  [Property in keyof Type as Required<'transport'>]: Type[Property];
-};
-
-export type KafkaConfig = MicroserviceConfigFactory<
-  KafkaMicroservice & Microservice
->;
+export type KafkaConfig = KafkaMicroservice & Microservice;
 
 /**
  * These are also used in transferring the configuration to the microservices
