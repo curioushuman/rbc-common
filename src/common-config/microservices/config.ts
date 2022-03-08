@@ -47,8 +47,8 @@ export class MicroservicesConfigGroup implements MicroservicesConfig {
     private serviceConfigs: MicroserviceConfig[],
   ) {
     serviceConfigs.forEach((serviceConfig) => {
-      this.services[serviceConfig.clientId] = serviceConfig;
-      this.services[serviceConfig.clientId].brokers = this.brokers;
+      this.services[serviceConfig.groupId] = serviceConfig;
+      this.services[serviceConfig.groupId].brokers = this.brokers;
     });
   }
 }
