@@ -7,12 +7,12 @@ import type { MicroserviceConfig } from '.';
 export const services: MicroserviceConfig[] = [
   {
     name: 'AUTH_SERVICE',
-    clientId: 'auth',
+    clientId: 'rbc',
     groupId: 'auth',
   },
   {
     name: 'SUBSCRIPTIONS_SERVICE',
-    clientId: 'subscriptions',
+    clientId: 'rbc',
     groupId: 'subscriptions',
   },
 ];

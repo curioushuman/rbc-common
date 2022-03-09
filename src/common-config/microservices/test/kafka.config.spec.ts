@@ -47,11 +47,8 @@ describe('Microservices', () => {
                 clientId: kafkaConfig.clientId,
                 brokers: kafkaConfig.brokers,
               },
-              consumer: {
-                groupId: kafkaConfig.groupId,
-              },
               producer: {
-                allowAutoTopicCreation: false,
+                allowAutoTopicCreation: true,
                 idempotent: false,
               },
             },
