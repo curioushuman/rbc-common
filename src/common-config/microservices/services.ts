@@ -7,12 +7,12 @@ import type { MicroserviceConfig } from '.';
 export const services: MicroserviceConfig[] = [
   {
     name: 'AUTH_SERVICE',
-    clientId: 'kafka-service',
+    clientId: 'auth',
     groupId: 'auth',
   },
   {
     name: 'SUBSCRIPTIONS_SERVICE',
-    clientId: 'kafka-service',
+    clientId: 'subscriptions',
     groupId: 'subscriptions',
   },
 ];
