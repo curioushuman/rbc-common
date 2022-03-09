@@ -1,7 +1,7 @@
 import type { KafkaConfig } from '.';
-import { KafkaConsumerConfig } from './exports';
+import { KafkaClientConfig } from '.';
 
-export class KafkaProducerConfig extends KafkaConsumerConfig {
+export class KafkaProducerConfig extends KafkaClientConfig {
   constructor(kafkaConfig: KafkaConfig) {
     super(kafkaConfig);
 
