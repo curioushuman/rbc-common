@@ -6,7 +6,7 @@ export class KafkaProducerConfig extends KafkaConsumerConfig {
     super(kafkaConfig);
 
     this.options.options.producer = {
-      allowAutoTopicCreation: false,
+      allowAutoTopicCreation: true,
       idempotent: false,
     };
   }
