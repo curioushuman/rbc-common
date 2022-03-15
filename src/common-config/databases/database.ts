@@ -5,6 +5,7 @@ export enum Databases {
 
 export enum MongoDb {
   Uri = 'uri',
+  UriTest = 'uriTest',
 }
 
 // TBC when I get to this point

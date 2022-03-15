@@ -21,10 +21,12 @@ class CommonConfigService {
     const config: CommonConfig = {
       app: {
         port: process.env.PORT,
+        env: process.env.NODE_ENV || 'development',
       },
       database: {
         mongodb: {
           uri: process.env.MONGODB_URI,
+          uriTest: process.env.MONGODB_URI_TEST,
         },
       },
       microservices: new MicroservicesConfigGroup(this.brokers, this.services),
