@@ -1,4 +1,4 @@
-export abstract class MockModel<T> {
+export abstract class MongoDbMockModel<T> {
   protected abstract entityStub: T;
 
   constructor(createEntityData: T) {

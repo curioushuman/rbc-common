@@ -1,1 +1,1 @@
-export * from './mock.model';
+export * from './mongo-db.mock-model';
