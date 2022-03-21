@@ -30,7 +30,7 @@ function mongoUri() {
   const appName = process.env.RBC_APP_NAME;
   const releaseName = process.env.RBC_RELEASE_NAME.toUpperCase();
   const dbSvcName = process.env.RBC_DATABASE_SVC_NAME.toUpperCase().replace(
-    '-',
+    /-/i,
     '_',
   );
   const dbName = process.env.RBC_DATABASE_NAME || appName;
