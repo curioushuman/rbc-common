@@ -9,8 +9,6 @@ import { MongoDbService } from './mongo-db.service';
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => {
-        console.log('config.app.env', configService.get<string>('app.env'));
-        console.log('config.database', configService.get<string>('database'));
         return {
           uri:
             configService.get<string>('app.env') === 'production'
