@@ -29,10 +29,10 @@ function mongoUri() {
   console.log('process.env', process.env);
   const appName = process.env.RBC_APP_NAME;
   const releaseName = process.env.RBC_RELEASE_NAME.toUpperCase();
-  const dbSvcName = process.env.RBC_DATABASE_SVC_NAME.toUpperCase().replace(
-    /-/i,
+  const dbSvcName = process.env.RBC_DATABASE_SVC_NAME.replace(
+    /-/gi,
     '_',
-  );
+  ).toUpperCase();
   const dbName = process.env.RBC_DATABASE_NAME || appName;
   const dbPort = process.env.RBC_DATABASE_NAME || appName;
   const hostEnv = `${releaseName}_${dbSvcName}_SERVICE_HOST`;
