@@ -1,8 +1,9 @@
 import { ConfigFactory, ConfigObject } from '@nestjs/config';
 
-import type { CommonConfig } from './types';
+import { appConfig, CommonConfig } from './types';
 import { MicroservicesConfigGroup, services } from './microservices';
 import type { MicroserviceConfig } from './microservices';
+import { mongoDbConfig } from './databases';
 
 // TODO
 // * Testing
@@ -19,15 +20,9 @@ class CommonConfigService {
 
   static getConfig(): ConfigFactory {
     const config: CommonConfig = {
-      app: {
-        port: process.env.PORT,
-        env: process.env.NODE_ENV || 'development',
-      },
+      app: appConfig(),
       database: {
-        mongodb: {
-          uri: process.env.MONGODB_URI,
-          uriTest: process.env.MONGODB_URI_TEST,
-        },
+        mongodb: mongoDbConfig(),
       },
       microservices: new MicroservicesConfigGroup(this.brokers, this.services),
     };
