@@ -8,12 +8,16 @@ import { MongoDbService } from './mongo-db.service';
   imports: [
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
-        uri:
-          configService.get<string>('app.env') === 'production'
-            ? configService.get<string>('database.mongodb.uri')
-            : configService.get<string>('database.mongodb.uriTest'),
-      }),
+      useFactory: (configService: ConfigService) => {
+        console.log('config.app.env', configService.get<string>('app.env'));
+        console.log('config.database', configService.get<string>('database'));
+        return {
+          uri:
+            configService.get<string>('app.env') === 'production'
+              ? configService.get<string>('database.mongodb.uri')
+              : configService.get<string>('database.mongodb.uriTest'),
+        };
+      },
       inject: [ConfigService],
     }),
   ],
