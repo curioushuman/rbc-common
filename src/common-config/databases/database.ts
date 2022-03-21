@@ -34,7 +34,7 @@ function mongoUri() {
     '_',
   ).toUpperCase();
   const dbName = process.env.RBC_DATABASE_NAME || appName;
-  const dbPort = process.env.RBC_DATABASE_NAME || appName;
+  const dbPort = process.env.RBC_DATABASE_PORT || 27107;
   const hostEnv = `${releaseName}_${dbSvcName}_SERVICE_HOST`;
   console.log('hostEnv', hostEnv);
   const dbHost = process.env[hostEnv];
