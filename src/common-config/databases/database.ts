@@ -36,6 +36,11 @@ function mongoUri() {
   const dbPort = process.env.RBC_DATABASE_PORT || 27107;
   const hostEnv = `${releaseName}_${dbSvcName}_SERVICE_HOST`;
   const dbHost = process.env[hostEnv];
+  if (process.env.RBC_DEBUG) {
+    console.log('hostEnv', hostEnv);
+    console.log('dbSvcName', dbSvcName);
+    console.log('mongoUri()', `mongodb://${dbHost}:${dbPort}/${dbName}`);
+  }
   return `mongodb://${dbHost}:${dbPort}/${dbName}`;
 }
 

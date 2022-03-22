@@ -12,13 +12,21 @@ export enum App {
   Env = 'env',
   Release = 'release',
   Name = 'name',
+  Namespace = 'namespace',
+  Debug = 'debug',
 }
 
 export function appConfig(): AppConfigGroup {
-  return {
+  const config = {
     port: process.env.RBC_SVC_PORT,
     name: process.env.RBC_APP_NAME,
-    release: process.env.RBC_RELEASE_NAME,
+    release: process.env.RBC_RELEASE_NAME || process.env.RBC_APP_NAME,
+    namespace: process.env.RBC_RELEASE_NAMESPACE || 'default',
+    debug: process.env.RBC_DEBUG,
     env: process.env.NODE_ENV || 'development',
   };
+  if (process.env.RBC_DEBUG) {
+    console.log('appConfig()', config);
+  }
+  return config;
 }
