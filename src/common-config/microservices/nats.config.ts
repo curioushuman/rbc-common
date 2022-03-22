@@ -31,6 +31,10 @@ export class NatsClientConfig {
     if (process.env.RBC_DEBUG) {
       console.log('NatsConfig:releaseNamespace', releaseNamespace);
       console.log('NatsConfig:natsPort', natsPort);
+      console.log(
+        'NatsUri',
+        `nats://${releaseNamespace}-nats.${releaseNamespace}.svc.cluster.local:${natsPort}`,
+      );
     }
     return `nats://${releaseNamespace}-nats.${releaseNamespace}.svc.cluster.local:${natsPort}`;
   }

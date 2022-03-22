@@ -6,6 +6,7 @@ import type {
 /**
  * TODO
  * [ ] replace the functions with class definitions
+ * [ ] use DNS for the database host; see NATS for example
  */
 
 export enum Databases {
