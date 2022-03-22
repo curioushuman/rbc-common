@@ -27,7 +27,10 @@ export type DatabaseConfigGroup = CommonConfigGroup<Databases, MongoDb | Rdbms>;
 
 function mongoUri() {
   const appName = process.env.RBC_APP_NAME;
-  const releaseName = process.env.RBC_RELEASE_NAME.toUpperCase();
+  const releaseName = process.env.RBC_RELEASE_NAME.replace(
+    /-/gi,
+    '_',
+  ).toUpperCase();
   const dbSvcName = process.env.RBC_DATABASE_SVC_NAME.replace(
     /-/gi,
     '_',
