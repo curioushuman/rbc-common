@@ -1,8 +1,7 @@
 import { ConfigFactory, ConfigObject } from '@nestjs/config';
 
 import { appConfig, CommonConfig } from './types';
-import { MicroservicesConfigGroup, services } from './microservices';
-import type { MicroserviceConfig } from './microservices';
+import { NatsClientConfig } from './microservices';
 import { mongoDbConfig } from './databases';
 
 // TODO
@@ -15,16 +14,13 @@ import { mongoDbConfig } from './databases';
  * Returns a config object to be injected into microservice based on common standards
  */
 class CommonConfigService {
-  private static readonly brokers: string[] = ['kafka-srv:9092'];
-  private static readonly services: MicroserviceConfig[] = services;
-
   static getConfig(): ConfigFactory {
     const config: CommonConfig = {
       app: appConfig(),
       database: {
         mongodb: mongoDbConfig(),
       },
-      microservices: new MicroservicesConfigGroup(this.brokers, this.services),
+      nats: new NatsClientConfig().get(),
     };
 
     return this.getConfigFactory(config);

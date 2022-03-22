@@ -1,6 +1,6 @@
 import type { AppConfigGroup } from '.';
 import type { DatabaseConfigGroup } from '../databases';
-import type { MicroservicesConfigGroup } from '../microservices';
+import type { NatsClientOptions } from '../microservices';
 
 // TODO
 // - currently ALL values are optional; I need to be able to mark some as required
@@ -17,5 +17,5 @@ export type CommonConfigGroup<T extends string, U extends string> = {
 export type CommonConfig = {
   app: AppConfigGroup;
   database: DatabaseConfigGroup;
-  microservices: MicroservicesConfigGroup;
+  nats: NatsClientOptions;
 };

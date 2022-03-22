@@ -1,25 +1,27 @@
 import { Transport, KafkaOptions } from '@nestjs/microservices';
-// import { logLevel } from '@nestjs/microservices/external/kafka.interface';
-import type { KafkaConfig } from './';
 
-// TODO
-// - SSL and SASL
-// - bring in production from ENV variable from common-config
-// - review error logging
+export type KafkaClientOptions = { name: string } & KafkaOptions;
+
+/**
+ * TODO
+ * [ ] This is untested (and probably doesn't work)
+ *     I dropped this in favour of NATS, then quickly updated it to match
+ *     Review more thoroughly if you ever come back this way
+ */
 
 export class KafkaClientConfig {
-  protected options: { name: string } & KafkaOptions;
+  protected options: KafkaClientOptions;
 
-  constructor(private kafkaConfig: KafkaConfig) {
+  constructor() {
     // const productionTmp = false;
 
     this.options = {
-      name: kafkaConfig.name,
+      name: 'kafka',
       transport: Transport.KAFKA,
       options: {
         client: {
-          clientId: kafkaConfig.clientId,
-          brokers: kafkaConfig.brokers,
+          clientId: 'kafka-client',
+          brokers: this.brokers(),
           // ssl: productionTmp,
           // sasl: productionTmp ? kafka.sasl : undefined,
           // logLevel: productionTmp ? logLevel.ERROR : logLevel.INFO,
@@ -28,7 +30,21 @@ export class KafkaClientConfig {
     };
   }
 
-  public get(): { name: string } & KafkaOptions {
+  public get(): KafkaClientOptions {
     return this.options;
+  }
+
+  private brokers(): string[] {
+    return [this.buildBrokerUri()];
+  }
+
+  private buildBrokerUri(): string {
+    const releaseNamespace = process.env.RBC_RELEASE_NAMESPACE;
+    const kafkaPort = process.env.RBC_KAFKA_PORT || 9092;
+    if (process.env.RBC_DEBUG) {
+      console.log('NatsConfig:releaseNamespace', releaseNamespace);
+      console.log('NatsConfig:kafkaPort', kafkaPort);
+    }
+    return `${releaseNamespace}-kafka.${releaseNamespace}.svc.cluster.local:${kafkaPort}`;
   }
 }
